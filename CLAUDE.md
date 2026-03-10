@@ -83,21 +83,14 @@ LaunchAgent using `WatchPaths` to monitor `drawings/`. When a new file appears, 
 LaunchAgent using `WatchPaths` to monitor `price-list/`. When a new file appears, sends a `💰 NEW PRICE LIST: filename` alert. Tracks state in `~/.aark_pricelist_state`.
 
 ### SSH Login Alert
-`~/.ssh/rc` (not tracked in repo) fires on every SSH login and sends a `🔐 SSH LOGIN: user from IP` alert.
+`~/.ssh/rc` (tracked as `ssh-rc` in repo) fires on every SSH login and sends a `🔐 SSH LOGIN: user from IP` alert.
 
-To reinstall on a new machine:
+### `install.sh`
+Full setup script for a new machine. Run once after cloning:
 ```sh
-cp com.aark.startup-alert.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.aark.startup-alert.plist
-
-cp com.aark.shutdown-alert.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.aark.shutdown-alert.plist
-
-# Sleep/wake alerts
-brew install sleepwatcher
-cp sleep.sh ~/.sleep && cp wakeup.sh ~/.wakeup
-brew services start sleepwatcher
+./install.sh
 ```
+Installs Homebrew deps, symlinks scripts to `~/bin/`, loads all LaunchAgents, configures sleepwatcher, sets up `~/.ssh/rc`, adds cron jobs, and sends a confirmation alert.
 
 ## Directories
 

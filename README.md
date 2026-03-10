@@ -43,46 +43,15 @@ daily-summary              # send daily summary manually
 
 ## Setup
 
-All scripts are symlinked to `~/bin/` and available system-wide. Cron jobs and LaunchAgents run automatically:
-
-```
-*/5 * * * *   sysmon          # every 5 minutes
-0   9 * * *   daily-summary   # every day at 9am
-```
-
-The startup and shutdown alerts run via launchd, and sleep/wake alerts run via `sleepwatcher`. To install on a new machine:
+Clone the repo and run the install script — it handles everything automatically:
 
 ```sh
-cp com.aark.startup-alert.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.aark.startup-alert.plist
-
-cp com.aark.shutdown-alert.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.aark.shutdown-alert.plist
-
-# Sleep/wake alerts
-brew install sleepwatcher
-cp sleep.sh ~/.sleep && cp wakeup.sh ~/.wakeup
-brew services start sleepwatcher
-
-# Order alert
-cp com.aark.order-alert.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.aark.order-alert.plist
-
-# Order alert
-cp com.aark.bom-alert.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.aark.bom-alert.plist
-
-# Drawing alert
-cp com.aark.drawing-alert.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.aark.drawing-alert.plist
-
-# Price list alert
-cp com.aark.pricelist-alert.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.aark.pricelist-alert.plist
-
-# SSH login alert
-cp ssh-rc ~/.ssh/rc && chmod +x ~/.ssh/rc
+git clone https://github.com/aarkelectrotech/aark-electro-tech.git
+cd aark-electro-tech
+./install.sh
 ```
+
+`install.sh` installs Homebrew dependencies, symlinks scripts to `~/bin/`, loads all LaunchAgents, configures sleepwatcher, sets up the SSH login alert, adds cron jobs, and sends a confirmation alert to Telegram when complete.
 
 ## Directories
 
