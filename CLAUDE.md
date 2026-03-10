@@ -59,6 +59,17 @@ ln -sf "/Users/aark/Desktop/AARK ELECTRO TECH/script.sh" ~/bin/script-name
 
 Edit with `crontab -e`. Logs are in `/tmp/`.
 
+## LaunchAgents
+
+### `com.aark.startup-alert.plist`
+Sends a `🟢 Mac has started up` Telegram alert on every boot. Installed at `~/Library/LaunchAgents/`.
+
+To reinstall on a new machine:
+```sh
+cp com.aark.startup-alert.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.aark.startup-alert.plist
+```
+
 ## Directories
 
 | Directory | Purpose |
