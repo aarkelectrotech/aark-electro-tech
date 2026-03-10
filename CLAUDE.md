@@ -64,10 +64,16 @@ Edit with `crontab -e`. Logs are in `/tmp/`.
 ### `com.aark.startup-alert.plist`
 Sends a `🟢 Mac has started up` Telegram alert on every boot. Installed at `~/Library/LaunchAgents/`.
 
+### `shutdown-alert.sh` + `com.aark.shutdown-alert.plist`
+Persistent script that traps `SIGTERM` (sent by launchd on shutdown) and fires a `🔴 Mac is shutting down` Telegram alert. Runs continuously in the background.
+
 To reinstall on a new machine:
 ```sh
 cp com.aark.startup-alert.plist ~/Library/LaunchAgents/
 launchctl load ~/Library/LaunchAgents/com.aark.startup-alert.plist
+
+cp com.aark.shutdown-alert.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.aark.shutdown-alert.plist
 ```
 
 ## Directories
