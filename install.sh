@@ -24,7 +24,7 @@ brew install sleepwatcher osx-cpu-temp gh 2>/dev/null || true
 echo "\n→ Setting up ~/bin..."
 mkdir -p ~/bin
 
-for SCRIPT in alert sysmon daily-summary; do
+for SCRIPT in alert sysmon daily-summary inactivity-alert; do
   ln -sf "$PROJECT_DIR/${SCRIPT}.sh" ~/bin/$SCRIPT
   chmod +x "$PROJECT_DIR/${SCRIPT}.sh"
   echo "  Linked $SCRIPT"
@@ -93,6 +93,15 @@ if ! echo "$CURRENT_CRON" | grep -q 'daily-summary'; then
   echo "  Added daily-summary cron job"
 else
   echo "  Daily-summary cron job already exists"
+fi
+
+CRON_INACTIVITY="0 9 * * * export PATH=\"$HOME/bin:$PATH\" && $HOME/bin/inactivity-alert >> /tmp/inactivity-alert.log 2>&1"
+CURRENT_CRON=$(crontab -l 2>/dev/null || true)
+if ! echo "$CURRENT_CRON" | grep -q 'inactivity-alert'; then
+  (echo "$CURRENT_CRON"; echo "$CRON_INACTIVITY") | crontab -
+  echo "  Added inactivity-alert cron job"
+else
+  echo "  Inactivity-alert cron job already exists"
 fi
 
 # ── Test Alert ───────────────────────────────────────────────────────────────
