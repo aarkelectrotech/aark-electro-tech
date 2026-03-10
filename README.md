@@ -7,20 +7,20 @@ Automation scripts for system monitoring and Telegram alerting on a Mac Mini.
 | Script | Description |
 |--------|-------------|
 | `alert.sh` | Send a Telegram message via `@aark_electro_tech_bot` |
-| `sysmon.sh` | Monitor CPU, memory, disk, network, and public IP — alerts on issues |
+| `sysmon.sh` | Monitor CPU, memory, disk, network, public IP, and failed SSH logins — alerts on issues |
 | `daily-summary.sh` | Send a full system summary to Telegram every morning at 9am |
 | `com.aark.startup-alert.plist` | LaunchAgent that sends a Telegram alert on every Mac boot |
 | `shutdown-alert.sh` | Persistent script that sends a Telegram alert on shutdown |
 | `com.aark.shutdown-alert.plist` | LaunchAgent that runs `shutdown-alert.sh` persistently |
 | `sleep.sh` | Sends a Telegram alert when the Mac goes to sleep |
 | `wakeup.sh` | Sends a Telegram alert when the Mac wakes up |
-| `order-alert.sh` | Sends a Telegram alert when a new file is added to `orders/` |
+| `order-alert.sh` | Sends a Telegram alert when files are added or deleted in `orders/` |
 | `com.aark.order-alert.plist` | LaunchAgent that watches `orders/` via `WatchPaths` |
-| `bom-alert.sh` | Sends a Telegram alert when a new file is added to `bom-output/` |
+| `bom-alert.sh` | Sends a Telegram alert when files are added or deleted in `bom-output/` |
 | `com.aark.bom-alert.plist` | LaunchAgent that watches `bom-output/` via `WatchPaths` |
-| `drawing-alert.sh` | Sends a Telegram alert when a new file is added to `drawings/` |
+| `drawing-alert.sh` | Sends a Telegram alert when files are added or deleted in `drawings/` |
 | `com.aark.drawing-alert.plist` | LaunchAgent that watches `drawings/` via `WatchPaths` |
-| `pricelist-alert.sh` | Sends a Telegram alert when a new file is added to `price-list/` |
+| `pricelist-alert.sh` | Sends a Telegram alert when files are added or deleted in `price-list/` |
 | `com.aark.pricelist-alert.plist` | LaunchAgent that watches `price-list/` via `WatchPaths` |
 
 ## Usage
@@ -40,6 +40,7 @@ daily-summary              # send daily summary manually
 | Disk | 90% |
 | Network | pings 8.8.8.8 |
 | Public IP | alerts on change |
+| Failed SSH logins | alerts if any in last 5 min |
 
 ## Setup
 
