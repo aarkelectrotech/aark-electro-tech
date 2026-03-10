@@ -34,11 +34,26 @@ PUBLIC_IP=$(curl -s https://api.ipify.org)
 # Date
 DATE=$(date '+%A, %d %B %Y')
 
-$ALERT_SCRIPT "📊 Daily Summary — $DATE
+$ALERT_SCRIPT "📊 AARK Daily Summary — $DATE
+
 🖥 Host: $HOSTNAME
 ⏱ Uptime: $UPTIME
 🔥 CPU: ${CPU}%
 🧠 Memory: ${MEM_USED}% used
 💾 Disk: ${DISK}% used (${DISK_FREE} free)
 🌐 Network: $NET
-🌍 Public IP: $PUBLIC_IP"
+🌍 Public IP: $PUBLIC_IP
+
+🔔 Active Alerts (14)
+🟢 Startup — LaunchAgent
+🔴 Shutdown — LaunchAgent
+😴 Sleep / ☀️ Wake — sleepwatcher
+⚠️ Sysmon CPU/MEM/Disk/Net/IP/SSH — cron */5min
+📊 Daily Summary — cron 9am
+⏰ Inactivity (orders 3d, drawings 7d) — cron 9am
+📦 New Order / 🗑️ Deleted — WatchPaths
+📋 New BOM / 🗑️ Deleted — WatchPaths
+📐 New Drawing / 🗑️ Deleted — WatchPaths
+💰 New Price List / 🗑️ Deleted — WatchPaths
+🔐 SSH Login — ~/.ssh/rc
+🚨 Failed SSH — sysmon"
