@@ -20,6 +20,8 @@ Automation scripts for system monitoring and Telegram alerting on a Mac Mini.
 | `com.aark.bom-alert.plist` | LaunchAgent that watches `bom-output/` via `WatchPaths` |
 | `drawing-alert.sh` | Sends a Telegram alert when a new file is added to `drawings/` |
 | `com.aark.drawing-alert.plist` | LaunchAgent that watches `drawings/` via `WatchPaths` |
+| `pricelist-alert.sh` | Sends a Telegram alert when a new file is added to `price-list/` |
+| `com.aark.pricelist-alert.plist` | LaunchAgent that watches `price-list/` via `WatchPaths` |
 
 ## Usage
 
@@ -73,6 +75,10 @@ launchctl load ~/Library/LaunchAgents/com.aark.bom-alert.plist
 # Drawing alert
 cp com.aark.drawing-alert.plist ~/Library/LaunchAgents/
 launchctl load ~/Library/LaunchAgents/com.aark.drawing-alert.plist
+
+# Price list alert
+cp com.aark.pricelist-alert.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.aark.pricelist-alert.plist
 
 # SSH login alert
 cp ssh-rc ~/.ssh/rc && chmod +x ~/.ssh/rc
