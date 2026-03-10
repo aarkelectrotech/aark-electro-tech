@@ -55,8 +55,8 @@ Logs to `/tmp/inactivity-alert.log`.
 
 All scripts are symlinked to `~/bin/` which is added to `$PATH` in `~/.zshrc`. To add a new script:
 ```sh
-chmod +x script.sh
-ln -sf "/Users/aark/Desktop/AARK ELECTRO TECH/script.sh" ~/bin/script-name
+chmod +x scripts/script.sh
+ln -sf "/Users/aark/Desktop/AARK ELECTRO TECH/scripts/script.sh" ~/bin/script-name
 ```
 
 ## Cron Jobs
@@ -98,7 +98,7 @@ LaunchAgent using `WatchPaths` to monitor `price-list/`. Alerts on new (`💰 NE
 ### `install.sh`
 Full setup script for a new machine. Run once after cloning:
 ```sh
-./install.sh
+./scripts/install.sh
 ```
 Installs Homebrew deps, symlinks scripts to `~/bin/`, loads all LaunchAgents, configures sleepwatcher, sets up `~/.ssh/rc`, adds cron jobs, and sends a confirmation alert.
 

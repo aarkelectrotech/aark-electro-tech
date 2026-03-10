@@ -52,7 +52,7 @@ Clone the repo and run the install script — it handles everything automaticall
 ```sh
 git clone https://github.com/aarkelectrotech/aark-electro-tech.git
 cd aark-electro-tech
-./install.sh
+./scripts/install.sh
 ```
 
 `install.sh` installs Homebrew dependencies, symlinks scripts to `~/bin/`, loads all LaunchAgents, configures sleepwatcher, sets up the SSH login alert, adds cron jobs, and sends a confirmation alert to Telegram when complete.
