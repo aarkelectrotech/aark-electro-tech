@@ -76,6 +76,9 @@ LaunchAgent using `WatchPaths` to monitor `orders/`. When a new file appears, se
 ### `bom-alert.sh` + `com.aark.bom-alert.plist`
 LaunchAgent using `WatchPaths` to monitor `bom-output/`. When a new file appears, sends a `📋 NEW BOM OUTPUT: filename` alert. Tracks state in `~/.aark_bom_state`.
 
+### `drawing-alert.sh` + `com.aark.drawing-alert.plist`
+LaunchAgent using `WatchPaths` to monitor `drawings/`. When a new file appears, sends a `📐 NEW DRAWING: filename` alert. Tracks state in `~/.aark_drawings_state`.
+
 ### SSH Login Alert
 `~/.ssh/rc` (not tracked in repo) fires on every SSH login and sends a `🔐 SSH LOGIN: user from IP` alert.
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.aark.drawing-alert</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/zsh</string>
+        <string>/Users/aark/Desktop/AARK ELECTRO TECH/drawing-alert.sh</string>
+    </array>
+    <key>WatchPaths</key>
+    <array>
+        <string>/Users/aark/Desktop/AARK ELECTRO TECH/drawings</string>
+    </array>
+</dict>
+</plist>
