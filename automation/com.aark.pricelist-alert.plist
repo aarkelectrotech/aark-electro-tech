@@ -7,11 +7,11 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/zsh</string>
-        <string>/Users/aark/Desktop/AARK ELECTRO TECH/pricelist-alert.sh</string>
+        <string>/Users/aark/Desktop/AARK ELECTRO TECH/scripts/pricelist-alert.sh</string>
     </array>
     <key>WatchPaths</key>
     <array>
-        <string>/Users/aark/Desktop/AARK ELECTRO TECH/price-list</string>
+        <string>/Users/aark/Desktop/AARK ELECTRO TECH/scripts/price-list</string>
     </array>
 </dict>
 </plist>

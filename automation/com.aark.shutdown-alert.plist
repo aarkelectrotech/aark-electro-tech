@@ -7,7 +7,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/zsh</string>
-        <string>/Users/aark/Desktop/AARK ELECTRO TECH/shutdown-alert.sh</string>
+        <string>/Users/aark/Desktop/AARK ELECTRO TECH/scripts/shutdown-alert.sh</string>
     </array>
     <key>RunAtLoad</key>
     <true/>

@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.aark.bom-alert</string>
+    <string>com.aark.drawing-alert</string>
     <key>ProgramArguments</key>
     <array>
         <string>/bin/zsh</string>
-        <string>/Users/aark/Desktop/AARK ELECTRO TECH/bom-alert.sh</string>
+        <string>/Users/aark/Desktop/AARK ELECTRO TECH/scripts/drawing-alert.sh</string>
     </array>
     <key>WatchPaths</key>
     <array>
-        <string>/Users/aark/Desktop/AARK ELECTRO TECH/bom-output</string>
+        <string>/Users/aark/Desktop/AARK ELECTRO TECH/scripts/drawings</string>
     </array>
 </dict>
 </plist>
