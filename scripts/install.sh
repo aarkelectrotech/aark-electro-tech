@@ -5,7 +5,8 @@
 
 set -e
 
-PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SCRIPTS_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(cd "$SCRIPTS_DIR/.." && pwd)"
 echo "Installing from: $PROJECT_DIR"
 
 # ── Homebrew ────────────────────────────────────────────────────────────────
@@ -25,8 +26,8 @@ echo "\n→ Setting up ~/bin..."
 mkdir -p ~/bin
 
 for SCRIPT in alert sysmon daily-summary inactivity-alert; do
-  ln -sf "$PROJECT_DIR/${SCRIPT}.sh" ~/bin/$SCRIPT
-  chmod +x "$PROJECT_DIR/${SCRIPT}.sh"
+  ln -sf "$SCRIPTS_DIR/${SCRIPT}.sh" ~/bin/$SCRIPT
+  chmod +x "$SCRIPTS_DIR/${SCRIPT}.sh"
   echo "  Linked $SCRIPT"
 done
 
@@ -52,7 +53,7 @@ AGENTS=(
 )
 
 for AGENT in $AGENTS; do
-  PLIST="$PROJECT_DIR/${AGENT}.plist"
+  PLIST="$PROJECT_DIR/automation/${AGENT}.plist"
   DEST="$HOME/Library/LaunchAgents/${AGENT}.plist"
   cp "$PLIST" "$DEST"
   launchctl unload "$DEST" 2>/dev/null || true
@@ -62,15 +63,15 @@ done
 
 # ── Sleepwatcher ─────────────────────────────────────────────────────────────
 echo "\n→ Setting up sleepwatcher..."
-cp "$PROJECT_DIR/sleep.sh" ~/.sleep && chmod +x ~/.sleep
-cp "$PROJECT_DIR/wakeup.sh" ~/.wakeup && chmod +x ~/.wakeup
+cp "$SCRIPTS_DIR/sleep.sh" ~/.sleep && chmod +x ~/.sleep
+cp "$SCRIPTS_DIR/wakeup.sh" ~/.wakeup && chmod +x ~/.wakeup
 brew services restart sleepwatcher
 echo "  Sleepwatcher configured and started"
 
 # ── SSH RC ───────────────────────────────────────────────────────────────────
 echo "\n→ Setting up SSH login alert..."
 mkdir -p ~/.ssh
-cp "$PROJECT_DIR/ssh-rc" ~/.ssh/rc && chmod +x ~/.ssh/rc
+cp "$SCRIPTS_DIR/ssh-rc" ~/.ssh/rc && chmod +x ~/.ssh/rc
 echo "  SSH rc installed"
 
 # ── Cron Jobs ────────────────────────────────────────────────────────────────
