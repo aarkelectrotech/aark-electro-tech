@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+# AARK Electro Tech - SSH Login Alert
+/Users/aark/bin/alert "🔐 [$(hostname -s)] SSH LOGIN: $USER from ${SSH_CLIENT%% *} — $(date '+%A, %d %B %Y %H:%M')"

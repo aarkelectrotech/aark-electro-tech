@@ -14,6 +14,8 @@ Automation scripts for system monitoring and Telegram alerting on a Mac Mini.
 | `com.aark.shutdown-alert.plist` | LaunchAgent that runs `shutdown-alert.sh` persistently |
 | `sleep.sh` | Sends a Telegram alert when the Mac goes to sleep |
 | `wakeup.sh` | Sends a Telegram alert when the Mac wakes up |
+| `order-alert.sh` | Sends a Telegram alert when a new file is added to `orders/` |
+| `com.aark.order-alert.plist` | LaunchAgent that watches `orders/` via `WatchPaths` |
 
 ## Usage
 
@@ -55,6 +57,13 @@ launchctl load ~/Library/LaunchAgents/com.aark.shutdown-alert.plist
 brew install sleepwatcher
 cp sleep.sh ~/.sleep && cp wakeup.sh ~/.wakeup
 brew services start sleepwatcher
+
+# Order alert
+cp com.aark.order-alert.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.aark.order-alert.plist
+
+# SSH login alert
+cp ssh-rc ~/.ssh/rc && chmod +x ~/.ssh/rc
 ```
 
 ## Directories

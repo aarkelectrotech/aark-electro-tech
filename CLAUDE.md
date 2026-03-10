@@ -70,6 +70,12 @@ Persistent script that traps `SIGTERM` (sent by launchd on shutdown) and fires a
 ### `sleep.sh` + `wakeup.sh`
 Run by `sleepwatcher` (installed via Homebrew) on sleep and wake events. Symlinked to `~/.sleep` and `~/.wakeup`. Service runs via `brew services start sleepwatcher`.
 
+### `order-alert.sh` + `com.aark.order-alert.plist`
+LaunchAgent using `WatchPaths` to monitor `orders/`. When a new file appears, sends a `📦 NEW ORDER: filename` alert. Tracks state in `~/.aark_orders_state`.
+
+### SSH Login Alert
+`~/.ssh/rc` (not tracked in repo) fires on every SSH login and sends a `🔐 SSH LOGIN: user from IP` alert.
+
 To reinstall on a new machine:
 ```sh
 cp com.aark.startup-alert.plist ~/Library/LaunchAgents/
