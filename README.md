@@ -9,6 +9,7 @@ Automation scripts for system monitoring and Telegram alerting on a Mac Mini.
 | `alert.sh` | Send a Telegram message via `@aark_electro_tech_bot` |
 | `sysmon.sh` | Monitor CPU, memory, disk, network, and public IP — alerts on issues |
 | `daily-summary.sh` | Send a full system summary to Telegram every morning at 9am |
+| `com.aark.startup-alert.plist` | LaunchAgent that sends a Telegram alert on every Mac boot |
 
 ## Usage
 
@@ -30,11 +31,18 @@ daily-summary              # send daily summary manually
 
 ## Setup
 
-All scripts are symlinked to `~/bin/` and available system-wide. Cron jobs run automatically:
+All scripts are symlinked to `~/bin/` and available system-wide. Cron jobs and LaunchAgents run automatically:
 
 ```
 */5 * * * *   sysmon          # every 5 minutes
 0   9 * * *   daily-summary   # every day at 9am
+```
+
+The startup alert runs via launchd. To install it on a new machine:
+
+```sh
+cp com.aark.startup-alert.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.aark.startup-alert.plist
 ```
 
 ## Directories
