@@ -16,6 +16,8 @@ Automation scripts for system monitoring and Telegram alerting on a Mac Mini.
 | `wakeup.sh` | Sends a Telegram alert when the Mac wakes up |
 | `order-alert.sh` | Sends a Telegram alert when a new file is added to `orders/` |
 | `com.aark.order-alert.plist` | LaunchAgent that watches `orders/` via `WatchPaths` |
+| `bom-alert.sh` | Sends a Telegram alert when a new file is added to `bom-output/` |
+| `com.aark.bom-alert.plist` | LaunchAgent that watches `bom-output/` via `WatchPaths` |
 
 ## Usage
 
@@ -61,6 +63,10 @@ brew services start sleepwatcher
 # Order alert
 cp com.aark.order-alert.plist ~/Library/LaunchAgents/
 launchctl load ~/Library/LaunchAgents/com.aark.order-alert.plist
+
+# Order alert
+cp com.aark.bom-alert.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.aark.bom-alert.plist
 
 # SSH login alert
 cp ssh-rc ~/.ssh/rc && chmod +x ~/.ssh/rc
