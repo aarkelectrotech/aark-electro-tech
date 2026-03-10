@@ -1,0 +1,69 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+AARK Electro Tech automation scripts running on a Mac Mini. The project handles Telegram alerting, system monitoring, and directories for electrical/electronics business operations.
+
+## Telegram Bot
+
+- **Bot:** `@aark_electro_tech_bot` (ID: `8602611023`)
+- **Chat ID:** `8785206558`
+- Token is hardcoded in `alert.sh` (`BOT_TOKEN`) — if it changes, only `alert.sh` needs updating since all other scripts call it.
+
+## Scripts
+
+### `alert.sh`
+Core Telegram sender. All other scripts call this.
+```sh
+alert "Your message"
+```
+
+### `sysmon.sh`
+Checks CPU, memory, disk, network, and public IP every 5 minutes via cron. Sends alert if any threshold is breached or IP changes.
+- CPU threshold: 80%
+- Memory threshold: 85%
+- Disk threshold: 90%
+- Network: pings `8.8.8.8`
+- Public IP: compares against `~/.aark_public_ip`, alerts on change
+
+```sh
+sysmon   # run manually
+```
+
+Logs to `/tmp/sysmon.log`.
+
+### `daily-summary.sh`
+Sends a full system summary to Telegram every day at 9am. Includes CPU, memory, disk, uptime, network status, and public IP.
+```sh
+daily-summary   # run manually
+```
+
+Logs to `/tmp/daily-summary.log`.
+
+## PATH
+
+All scripts are symlinked to `~/bin/` which is added to `$PATH` in `~/.zshrc`. To add a new script:
+```sh
+chmod +x script.sh
+ln -sf "/Users/aark/Desktop/AARK ELECTRO TECH/script.sh" ~/bin/script-name
+```
+
+## Cron Jobs
+
+```
+*/5 * * * *  sysmon        # system monitor
+0 9 * * *    daily-summary # 9am daily summary
+```
+
+Edit with `crontab -e`. Logs are in `/tmp/`.
+
+## Directories
+
+| Directory | Purpose |
+|-----------|---------|
+| `drawings/` | Electrical/technical drawings |
+| `price-list/` | Component or service price lists |
+| `bom-output/` | Bill of materials output files |
+| `orders/` | Customer or supplier orders |
