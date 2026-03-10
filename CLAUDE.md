@@ -43,6 +43,14 @@ daily-summary   # run manually
 
 Logs to `/tmp/daily-summary.log`.
 
+### `inactivity-alert.sh`
+Runs daily at 9am via cron. Alerts if no new files have appeared in `orders/` within 3 days or `drawings/` within 7 days. Thresholds are set at the top of the script.
+```sh
+inactivity-alert   # run manually
+```
+
+Logs to `/tmp/inactivity-alert.log`.
+
 ## PATH
 
 All scripts are symlinked to `~/bin/` which is added to `$PATH` in `~/.zshrc`. To add a new script:
@@ -54,8 +62,9 @@ ln -sf "/Users/aark/Desktop/AARK ELECTRO TECH/script.sh" ~/bin/script-name
 ## Cron Jobs
 
 ```
-*/5 * * * *  sysmon        # system monitor
-0 9 * * *    daily-summary # 9am daily summary
+*/5 * * * *  sysmon            # system monitor
+0 9 * * *    daily-summary     # 9am daily summary
+0 9 * * *    inactivity-alert  # 9am inactivity check
 ```
 
 Edit with `crontab -e`. Logs are in `/tmp/`.

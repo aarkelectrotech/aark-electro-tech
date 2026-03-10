@@ -8,6 +8,7 @@ Automation scripts for system monitoring and Telegram alerting on a Mac Mini.
 |--------|-------------|
 | `alert.sh` | Send a Telegram message via `@aark_electro_tech_bot` |
 | `sysmon.sh` | Monitor CPU, memory, disk, network, public IP, and failed SSH logins — alerts on issues |
+| `inactivity-alert.sh` | Alerts if no new orders (3 days) or drawings (7 days) have arrived |
 | `daily-summary.sh` | Send a full system summary to Telegram every morning at 9am |
 | `com.aark.startup-alert.plist` | LaunchAgent that sends a Telegram alert on every Mac boot |
 | `shutdown-alert.sh` | Persistent script that sends a Telegram alert on shutdown |
@@ -41,6 +42,8 @@ daily-summary              # send daily summary manually
 | Network | pings 8.8.8.8 |
 | Public IP | alerts on change |
 | Failed SSH logins | alerts if any in last 5 min |
+| Orders inactivity | 3 days |
+| Drawings inactivity | 7 days |
 
 ## Setup
 
