@@ -67,6 +67,9 @@ Sends a `🟢 Mac has started up` Telegram alert on every boot. Installed at `~/
 ### `shutdown-alert.sh` + `com.aark.shutdown-alert.plist`
 Persistent script that traps `SIGTERM` (sent by launchd on shutdown) and fires a `🔴 Mac is shutting down` Telegram alert. Runs continuously in the background.
 
+### `sleep.sh` + `wakeup.sh`
+Run by `sleepwatcher` (installed via Homebrew) on sleep and wake events. Symlinked to `~/.sleep` and `~/.wakeup`. Service runs via `brew services start sleepwatcher`.
+
 To reinstall on a new machine:
 ```sh
 cp com.aark.startup-alert.plist ~/Library/LaunchAgents/
@@ -74,6 +77,11 @@ launchctl load ~/Library/LaunchAgents/com.aark.startup-alert.plist
 
 cp com.aark.shutdown-alert.plist ~/Library/LaunchAgents/
 launchctl load ~/Library/LaunchAgents/com.aark.shutdown-alert.plist
+
+# Sleep/wake alerts
+brew install sleepwatcher
+cp sleep.sh ~/.sleep && cp wakeup.sh ~/.wakeup
+brew services start sleepwatcher
 ```
 
 ## Directories
