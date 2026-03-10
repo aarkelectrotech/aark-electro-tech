@@ -44,6 +44,13 @@ if ! ping -c 1 -W 3 8.8.8.8 &>/dev/null; then
   ALERT_SENT=1
 fi
 
+# Failed SSH login attempts (last 5 minutes)
+FAILED_SSH=$(log show --predicate 'process == "sshd"' --last 5m 2>/dev/null | grep -c "Failed\|Invalid" || true)
+if (( FAILED_SSH > 0 )); then
+  $ALERT_SCRIPT "🚨 [$HOSTNAME] FAILED SSH LOGINS: ${FAILED_SSH} attempt(s) in last 5 minutes"
+  ALERT_SENT=1
+fi
+
 # Public IP monitor
 IP_FILE="$HOME/.aark_public_ip"
 CURRENT_IP=$(curl -s https://api.ipify.org)

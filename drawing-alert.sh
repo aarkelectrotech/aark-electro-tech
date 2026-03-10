@@ -27,5 +27,14 @@ if [[ -n "$NEW_FILES" ]]; then
   done <<< "$NEW_FILES"
 fi
 
+# Find deleted files
+DELETED_FILES=$(comm -23 <(echo "$PREVIOUS") <(echo "$CURRENT") | grep -v '^$')
+
+if [[ -n "$DELETED_FILES" ]]; then
+  while IFS= read -r FILE; do
+    $ALERT_SCRIPT "🗑️ [$HOSTNAME] DRAWING DELETED: $FILE"
+  done <<< "$DELETED_FILES"
+fi
+
 # Save current state
 echo "$CURRENT" > "$STATE_FILE"
